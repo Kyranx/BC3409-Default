@@ -7,6 +7,7 @@ app = Flask(__name__)
 from flask import request, render_template
 # In[2]:
 from keras.models import load_model
+import pickle
 @app.route("/",methods=["GET","POST"])
 def index():
     if request.method == "POST":
@@ -14,7 +15,7 @@ def index():
         age=request.form.get("age")
         loan=request.form.get("loan")
         print(income,age,loan)
-        model=load_model("assignment_logreg.sav")
+        model=pickle.load(open("assignment_logreg.sav", 'rb'))
         pred=model.predict([[float(income),float(age),float(loan)]])
         s = "The predicted default rate is : " + str(pred)
         return(render_template("index.html",result=s))
