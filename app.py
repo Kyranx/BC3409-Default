@@ -17,10 +17,13 @@ def index():
         print(income,age,loan)
         model=joblib.load("assignment_logreg")
         pred=model.predict([[float(income),float(age),float(loan)]])
-        s = "The predicted default rate is : " + str(pred)
+        if pred == "1":
+            s = "The borrower has a very high chance to default"
+        else:
+            s = "The borrower has a very lower chance to default"
         return(render_template("index.html",result=s))
     else:
-        return(render_template("index.html",result="2"))
+        return(render_template("index.html",result="Please fill in the following blanks above"))
 # In[ ]:
 if __name__ == "__main__":
     app.run(host="127.0.0.1", port=int("5000"))
