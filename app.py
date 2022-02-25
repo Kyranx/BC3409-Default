@@ -24,8 +24,8 @@ def index():
         elif model_type == "XG Boost":
             model=joblib.load("assignment_xg")
             
-        elif model_type == "Logistic Regression":
-            model=joblib.load("assignment_logreg")
+            else:
+                model=joblib.load("assignment_logreg")
             
         income=request.form.get("income")
         age=request.form.get("age")
