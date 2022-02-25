@@ -15,7 +15,7 @@ def index():
         age=request.form.get("age")
         loan=request.form.get("loan")
         print(income,age,loan)
-        model=joblib.load("assignment_forest")
+        model=joblib.load("assignment_logreg")
         pred=model.predict([[float(income),float(age),float(loan)]])
         s = "The predicted default rate is : " + str(pred)
         return(render_template("index.html",result=s))
