@@ -28,11 +28,11 @@ def index():
         print(income,age,loan)
         pred=model.predict([[float(income),float(age),float(loan)]])
         if pred == 1:
-            s = "The borrower will default"
-        elif pred == 0:
-            s = "The borrower will not default"
-        elif pred > 0.5:
             s = "The borrower has a very high chance to default"
+        elif pred == 0:
+            s = "The borrower has a very low chance to default"
+        elif pred > 0.5:
+            s = "The borrower has a high chance to default"
         else:
             s = "The borrower has a low chance to default"
         return(render_template("index.html",result=s))
