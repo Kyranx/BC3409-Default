@@ -17,9 +17,9 @@ def index():
         print(income,age,loan)
         model=joblib.load("assignment_logreg")
         pred=model.predict([[float(income),float(age),float(loan)]])
-        if pred == "1":
+        if pred = 1:
             s = "The borrower has a very high chance to default"
-        else:
+        if pred = 0:
             s = "The borrower has a very low chance to default"
         return(render_template("index.html",result=s))
     else:
