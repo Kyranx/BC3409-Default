@@ -11,16 +11,22 @@ import joblib
 @app.route("/",methods=["GET","POST"])
 def index():
     if request.method == "POST":
-        if request.form.get("logreg"): 
-            model=joblib.load("assignment_logreg")
-        elif request.form.get("tree"):
-            model=joblib.load("assignment_tree")
-        elif request.form.get("forest"):
-            model=joblib.load("assignment_forest")
-        elif request.form.get("xg"):
-            model=joblib.load("assignment_xg")
-        elif request.form.get("logreg"):
+        model_type=request.form.get("model")
+        if model_type = "Neural Network":
             model=joblib.load("assignment_nn")
+            
+        elif model_type = "Decision Tree":
+            model=joblib.load("assignment_tree")
+            
+        elif model_type = "Random Forest":
+            model=joblib.load("assignment_forest")
+            
+        elif model_type = "XG Boost":
+            model=joblib.load("assignment_xg")
+            
+        else model_type = "Logistic Regression":
+            model=joblib.load("assignment_logreg")
+            
         income=request.form.get("income")
         age=request.form.get("age")
         loan=request.form.get("loan")
