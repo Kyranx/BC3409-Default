@@ -12,19 +12,19 @@ import joblib
 def index():
     if request.method == "POST":
         model_type=request.form.get("model")
-        if model_type = "Neural Network":
+        if model_type == "Neural Network":
             model=joblib.load("assignment_nn")
             
-        elif model_type = "Decision Tree":
+        elif model_type == "Decision Tree":
             model=joblib.load("assignment_tree")
             
-        elif model_type = "Random Forest":
+        elif model_type == "Random Forest":
             model=joblib.load("assignment_forest")
             
-        elif model_type = "XG Boost":
+        elif model_type == "XG Boost":
             model=joblib.load("assignment_xg")
             
-        else model_type = "Logistic Regression":
+        else model_type == "Logistic Regression":
             model=joblib.load("assignment_logreg")
             
         income=request.form.get("income")
