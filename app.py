@@ -20,7 +20,7 @@ def index():
         if pred == "1":
             s = "The borrower has a very high chance to default"
         else:
-            s = "The borrower has a very lower chance to default"
+            s = "The borrower has a very low chance to default"
         return(render_template("index.html",result=s))
     else:
         return(render_template("index.html",result="Please fill in the following blanks above"))
