@@ -14,19 +14,14 @@ def index():
         model_type=request.form.get("model")
         if model_type == "Neural Network":
             model=joblib.load("assignment_nn")
-            
-            elif model_type == "Decision Tree":
-                model=joblib.load("assignment_tree")
-            
-                elif model_type == "Random Forest":
-                    model=joblib.load("assignment_forest")
-            
-                    elif model_type == "XG Boost":
-                        model=joblib.load("assignment_xg")
-            
-                        else:
-                            model=joblib.load("assignment_logreg")
-            
+        elif model_type == "Decision Tree":
+            model=joblib.load("assignment_tree")
+        elif model_type == "Random Forest":
+            model=joblib.load("assignment_forest")
+        elif model_type == "XG Boost":
+            model=joblib.load("assignment_xg")
+        else:
+            model=joblib.load("assignment_logreg")
         income=request.form.get("income")
         age=request.form.get("age")
         loan=request.form.get("loan")
@@ -34,12 +29,12 @@ def index():
         pred=model.predict([[float(income),float(age),float(loan)]])
         if pred == 1:
             s = "The borrower will default"
-            elif pred == 0:
-                s = "The borrower will not default"
-                elif pred > 0.5:
-                    s = "The borrower has a very high chance to default"
-                    else:
-                        s = "The borrower has a low chance to default"
+        elif pred == 0:
+            s = "The borrower will not default"
+        elif pred > 0.5:
+            s = "The borrower has a very high chance to default"
+        else:
+            s = "The borrower has a low chance to default"
         return(render_template("index.html",result=s))
     else:
         return(render_template("index.html",result="Please fill in the following blanks above"))
